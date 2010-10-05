@@ -11,10 +11,6 @@ import java.text.ParseException;
  */
 public class Bid extends AbstractTransportable {
     /**
-     * The auction key.
-     */
-    private static final String AUCTION_KEY = "auction-key";
-    /**
      * The max tick key.
      */
     private static final String MAX_TICK_KEY = "tick-max";
@@ -22,13 +18,10 @@ public class Bid extends AbstractTransportable {
      * The max tick key.
      */
     private static final String DESIRED_QUANTITY_KEY = "desired-quantity";
-        
-    private String auction;
 
     private int maxTick;
 
     private int desiredQuantity;
-
 
     /**
      * Creates a generic Bid.
@@ -36,15 +29,9 @@ public class Bid extends AbstractTransportable {
     public Bid() {
     }
 
-    public Bid(final String auction, final int maxTick, final int desiredQuantity) {
-        this.auction = auction;
+    public Bid(final int maxTick, final int desiredQuantity) {
         this.maxTick = maxTick;
         this.desiredQuantity = desiredQuantity;
-    }
-
-
-    public String getAuction() {
-        return auction;
     }
 
     public int getMaxTick() {
@@ -53,11 +40,6 @@ public class Bid extends AbstractTransportable {
 
     public int getDesiredQuantity() {
         return desiredQuantity;
-    }
-
-    public void setAuction(final String auction) throws IllegalStateException {
-        lockCheck();
-        this.auction = auction;
     }
 
     public void setMaxTick(final int maxTick) throws IllegalStateException {
@@ -70,8 +52,6 @@ public class Bid extends AbstractTransportable {
         this.desiredQuantity = desiredQuantity;
     }
 
-
-
     /**
      * Reads the product from the reader.
      * @param reader the reader to read data from.
@@ -79,9 +59,8 @@ public class Bid extends AbstractTransportable {
      */
     @Override
     protected final void readWithLock(final TransportReader reader) throws ParseException {
-        this.setAuction(reader.getAttribute(AUCTION_KEY, null));
         this.setMaxTick(reader.getAttributeAsInt(MAX_TICK_KEY));
-        this.setMaxTick(reader.getAttributeAsInt(DESIRED_QUANTITY_KEY));        
+        this.setDesiredQuantity(reader.getAttributeAsInt(DESIRED_QUANTITY_KEY));        
     }
 
     /**
@@ -90,10 +69,6 @@ public class Bid extends AbstractTransportable {
      */
     @Override
     protected final void writeWithLock(final TransportWriter writer) {
-        if (getAuction() != null) {
-            writer.attr(AUCTION_KEY, getAuction());
-        }
-
         writer.attr(MAX_TICK_KEY, getMaxTick());
         writer.attr(DESIRED_QUANTITY_KEY, getDesiredQuantity());
 
@@ -105,25 +80,8 @@ public class Bid extends AbstractTransportable {
      */
     @Override
     public final String toString() {
-        return String.format("(Bid auction:%s max-tick:%d desired-quantity:%d)", getAuction(), getMaxTick(), getDesiredQuantity());
+        return String.format("(Bid max-tick:%d desired-quantity:%d)", getMaxTick(), getDesiredQuantity());
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Bid bid = (Bid) o;
-
-        return desiredQuantity == bid.desiredQuantity && maxTick == bid.maxTick && !(auction != null ? !auction.equals(bid.auction) : bid.auction != null);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = auction != null ? auction.hashCode() : 0;
-        result = 31 * result + maxTick;
-        result = 31 * result + desiredQuantity;
-        return result;
-    }
 }
