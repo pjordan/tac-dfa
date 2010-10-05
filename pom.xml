@@ -28,7 +28,6 @@
   <modules>
 	<module>dfa-common</module>
 	<module>dfa-server</module>
-	<module>dfa-agent</module>
     <module>dfa-viewer</module>
     <module>dfa-logviewer</module>
     <module>dfa-logging</module>
