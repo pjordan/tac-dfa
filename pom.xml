@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 		
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.brown.cs.tac</groupId>
+  <artifactId>tac-dfa</artifactId>
+  <packaging>pom</packaging>
+  <version>0.1-SNAPSHOT</version>
+  <name>TAC Dutch Flower Auctions</name>
+  <description>Dutch Flower Auctions game for the Trading Agent Competition</description>
+  <inceptionYear>2010</inceptionYear>
+  <organization>
+    <name>Association for Trading Agent Research</name>
+    <url>http://tradingagents.org/</url>
+  </organization>
+  <developers>
+    <developer>
+      <id>prjordan</id>
+      <name>Patrick Jordan</name>
+      <email>info [at] www.patrickrjordan.com</email>
+      <roles>
+        <role>Research Scientist</role>
+      </roles>
+      <url>http://www.patrickrjordan.com</url>
+      <timezone>-8</timezone>
+    </developer>    
+  </developers>	
+  <modules>
+	<module>dfa-common</module>
+	<module>dfa-server</module>
+	<module>dfa-agent</module>
+    <module>dfa-viewer</module>
+    <module>dfa-logviewer</module>
+    <module>dfa-logging</module>
+  </modules>
+</project>
