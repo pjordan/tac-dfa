@@ -83,7 +83,7 @@ class ClockAuctionImpl implements ClockAuction {
                     minBidQuantity = updateQuantity;
                     lot.reduceQuantityBy(event.getQuantity());
 
-                    support.firePurchaseEvent(tickValue, event.getQuantity());
+                    support.firePurchaseEvent(tickValue, event);
 
                     clock.resetTick(updateTick);
                     purchase = true;

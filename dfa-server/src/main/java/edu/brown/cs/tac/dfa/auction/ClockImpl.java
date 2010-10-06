@@ -6,10 +6,17 @@ package edu.brown.cs.tac.dfa.auction;
 class ClockImpl implements Clock {
     private int tick;
 
+    private ClockAuction clockAuction;
+
     private ClockListenerSupport support;
 
-    ClockImpl() {
+    ClockImpl(ClockAuction clockAuction) {
+        this.clockAuction = clockAuction;
         support = new ClockListenerSupport(this);
+    }
+
+    public ClockAuction getClockAuction() {
+        return clockAuction;
     }
 
     public int getTickValue() {

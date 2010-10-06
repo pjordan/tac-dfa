@@ -24,9 +24,9 @@ public class AuctionListenerSupport extends ListenerSupport<ClockAuction, Auctio
         }
     }
 
-    public void firePurchaseEvent(int tick, int quantity) {
+    public void firePurchaseEvent(int tick, BidEvent event) {
         for (AuctionListener listener : this) {
-            listener.purchaseEvent(getSource(), tick, quantity);
+            listener.purchaseEvent(getSource(), tick, event);
         }
     }
 }

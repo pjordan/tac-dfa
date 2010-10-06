@@ -13,4 +13,10 @@ public interface ClockAuction {
     AuctionInfo getInfo();
 
     void bid(Bidder bidder, int quantity);
+
+    public void addListener(AuctionListener listener);
+
+    public void removeListener(AuctionListener listener);
+
+    public void removeAllListeners();
 }

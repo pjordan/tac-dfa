@@ -9,5 +9,5 @@ public interface AuctionListener {
 
     void auctionStopped(ClockAuction auction);
 
-    void purchaseEvent(ClockAuction auction, int tick, int quantity);
+    void purchaseEvent(ClockAuction auction, int tick, BidEvent bidEvent);
 }

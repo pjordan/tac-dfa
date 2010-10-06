@@ -12,5 +12,7 @@ public interface Clock {
     void removeClockListener(ClockListener listener);
 
     void removeAllClockListeners();
+
+    ClockAuction getClockAuction();
     
 }
